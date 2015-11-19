@@ -1,0 +1,49 @@
+{
+	"name": "MyTwitter",
+	"version": "1.0",
+	"author": [
+		"[http://www.axllent.org/code/mytwit/ Ralph Slooten]",
+		"페네트-"
+	],
+	"url": "http://wiki-chan.net/",
+	"description": "Show twitter widget in mediawiki, using Ralph's MyTwit class.",
+	"license-name": "MIT",
+	"type": "parserhook",
+	"ExtensionFunctions": [
+		"MyTwitWrapper::registerTwitterTag"
+	],
+	"Hooks": {
+		"OutputPageParserOutput": [
+			"MyTwitWrapper::OutputPageParser"
+		]
+	},
+	"ResourceModules": {
+		"ext.mytwitter.css": {
+			"styles": {
+				"MyTwitter.css": [
+					"screen"
+				]
+			},
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "MyTwitter"
+	},
+	"AutoloadClasses": {
+		"MyTwitWrapper": "MyTwitter.class.php",
+		"MyTwit": "mytwit.inc.php"
+	},
+	"config": {
+		"TwitterUser": "",
+		"TwitterConsumerKey": "",
+		"TwitterConsumerSecret": "",
+		"TwitterOAUTHAccessToken": "",
+		"TwitterOAUTHAccessTokenSecret": "",
+		"TwitterCacheExpire": 600,
+		"TwitterPostLimit": 5,
+		"TwitterExcludeReplies": true,
+		"TwitterOpenLinksInBlank": true
+	}
+}
