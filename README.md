@@ -22,7 +22,7 @@ git clone https://github.com/wiki-chan/MyTwitter.git
 Then add the following code to your LocalSettings.php (see https://www.mediawiki.org/wiki/Manual:LocalSettings.php) file:
 ```php
 # Variables
-wfLoadExtension( "Variables" );
+wfLoadExtension( "MyTwitter" );
 ```
 ## Usage ##
 On Mediawiki page, use `<twitter/>` tag. You can use `<twitter>ERRORMESSAGE</twitter>` for showing error message in case of error. Built-in css code works only in **Main page**.
