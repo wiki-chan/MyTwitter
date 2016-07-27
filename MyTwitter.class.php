@@ -17,12 +17,15 @@ class MyTwitWrapper {
 
 	static function printTwitterTag( $input, $params, $parser ) {
 		$parser->disableCache();
+	    return MyTwitWrapper::getTwit($input);
+	}
 
+	static function getTwit( $error ) {
 		global $wgTwitterUser, $wgTwitterConsumerKey, $wgTwitterConsumerSecret, $wgTwitterOAUTHAccessToken;
 		global $wgTwitterOAUTHAccessTokenSecret, $wgTwitterCacheExpire, $wgTwitterPostLimit, $wgTwitterExcludeReplies, $wgTwitterOpenLinksInBlank;
 
 		$mytwit = new MyTwit();
-		$mytwit->TwitterUser = isset($params['user']) ? $params['user'] : $wgTwitterUser;
+		$mytwit->TwitterUser = $wgTwitterUser;
 		$mytwit->TWITTER_CONSUMER_KEY = $wgTwitterConsumerKey;
 		$mytwit->TWITTER_CONSUMER_SECRET = $wgTwitterConsumerSecret;
 		$mytwit->TWITTER_OAUTH_ACCESS_TOKEN = $wgTwitterOAUTHAccessToken;
@@ -38,7 +41,7 @@ class MyTwitWrapper {
 
 		if ($mytwit->ErrorMessage) {
 			$result .= '<div class="twitter-error">' .
-						str_replace("ERRORMESSAGE", $mytwit->ErrorMessage, $input) .
+						str_replace("ERRORMESSAGE", $mytwit->ErrorMessage, $error) .
 						'</div>';
 		} else {
 			$result .=
@@ -66,6 +69,7 @@ class MyTwitWrapper {
 		}
 
 	    $result .= "</div>";
+
 	    return $result;
 	}
 
